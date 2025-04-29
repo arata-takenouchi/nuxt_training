@@ -6,6 +6,9 @@
 </template>
 
 <script setup lang="ts">
+// こう書くとnuxt.config.tsで設定した環境変数を使用できる
+const runtimeConfig = useRuntimeConfig()
+
 const composable =useMyComposable()
 const count = ref(1)
 const double = computed(() => count.value * 2)
