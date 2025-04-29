@@ -2,6 +2,21 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
+  logLevel: 'info',
+  $production: {
+    routeRules: {
+      '/**': { isr: true }
+    },
+    logLevel: 'error',
+  },
+  $development: {
+    logLevel: 'warning',
+  },
+  $env: {
+    staging:{
+      logLevel: 'debug',
+    }
+  }
   // components: {
   //   dirs: []
   // }
