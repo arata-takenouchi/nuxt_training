@@ -14,7 +14,11 @@ export default defineNuxtConfig({
     app: {
       // apiBaseURL: '/api'
     }
-  }
+  },
+  css: [
+    '~/assets/css/main.css',
+    '~/assets/scss/main.scss',
+  ],
   // components: {
   //   dirs: []
   // }
