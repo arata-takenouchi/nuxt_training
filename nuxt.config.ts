@@ -12,6 +12,21 @@ export default defineNuxtConfig({
       apiBaseURL: '/api'
     },
     app: {
+      head: {
+        // site title
+        title: 'App Title',
+        // 言語設定
+        htmlAttrs: {
+          lang: 'es',
+        },
+        // おそらくfavicon
+        link: [
+          { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        ],
+        // 文字コードとviewportの設定もできる
+        charset: 'utf-16',
+        viewport: 'width=device-width, initial-scale=1, maximum-scale=1'
+      }
       // apiBaseURL: '/api'
     }
   },
