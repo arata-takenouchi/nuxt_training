@@ -17,7 +17,17 @@ async function handleFormSubmit() {
   })
 }
 
-const { data } = await useFetch('/api/echo')
+// const { data } = await useFetch('/api/echo')
+
+// 複数のfetchの結果を待つケース
+// ただし、データのfetchとcacheが目的なので、副作用を生むのはNG（storeの関数のような）
+const { data: discounts, status } = await useAsyncData('cart-discount', async () => {
+  const [coupons, offers] = await Promise.all([
+    $fetch('/cart/coupons'),
+    $fetch('/cart/offers'),
+  ])
+  return { coupons, offers }
+})
 </script>
 
 <template>
