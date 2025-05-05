@@ -2,7 +2,7 @@
 // SSRの場合、useFetchを使うことで、サーバー側で取得したデータをクライアント側に引き継ぐことができる
 // サーバー側ですでにデータ取得している場合はキャッシュが使用されるため、
 // 同じリクエストがサーバー側とクライアント側で2回行われるということは無い
-const { data } = await useFetch('/api/data')
+// const { data } = await useFetch('/api/data')
 
 // ユーザー操作に応じてサーバー側にリクエスト投げるだけのケースなら、普通のfetchでOK
 // ただし、レスポンスデータをクライアント側で使うなら、データ含めて事前にレンダリングしてくれるuseFetchでいい（SSRの場合）
@@ -16,6 +16,8 @@ async function handleFormSubmit() {
     },
   })
 }
+
+const { data } = await useFetch('/api/echo')
 </script>
 
 <template>
