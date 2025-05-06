@@ -28,6 +28,23 @@ const { data: discounts, status } = await useAsyncData('cart-discount', async ()
   ])
   return { coupons, offers }
 })
+
+// idが変わるたびにuser取得
+// const id = ref(1)
+// const { data, error, refresh } = await useFetch('/api/users', {
+//   watch: [id],
+// })
+// ただしURLが変わるわけではない（呼び出した時にURL構築）ので、これはダメ
+// const { data, error, refresh } = await useFetch(`/api/users/${id.value}`, {
+//   watch: [id],
+// })
+// パラメータを動的に渡したい場合はこちら（パラメータが変わるたびに再取得）
+const id = ref(null)
+const { data, status } = await useLazyFetch('/api/user', {
+  query: {
+    user_id: id
+  }
+})
 </script>
 
 <template>
