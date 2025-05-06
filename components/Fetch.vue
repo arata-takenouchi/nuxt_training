@@ -21,13 +21,13 @@ async function handleFormSubmit() {
 
 // 複数のfetchの結果を待つケース
 // ただし、データのfetchとcacheが目的なので、副作用を生むのはNG（storeの関数のような）
-const { data: discounts, status } = await useAsyncData('cart-discount', async () => {
-  const [coupons, offers] = await Promise.all([
-    $fetch('/cart/coupons'),
-    $fetch('/cart/offers'),
-  ])
-  return { coupons, offers }
-})
+// const { data: discounts, status } = await useAsyncData('cart-discount', async () => {
+//   const [coupons, offers] = await Promise.all([
+//     $fetch('/cart/coupons'),
+//     $fetch('/cart/offers'),
+//   ])
+//   return { coupons, offers }
+// })
 
 // idが変わるたびにuser取得
 // const id = ref(1)
@@ -39,12 +39,15 @@ const { data: discounts, status } = await useAsyncData('cart-discount', async ()
 //   watch: [id],
 // })
 // パラメータを動的に渡したい場合はこちら（パラメータが変わるたびに再取得）
-const id = ref(null)
-const { data, status } = await useLazyFetch('/api/user', {
-  query: {
-    user_id: id
-  }
-})
+// const id = ref(null)
+// const { data, status } = await useLazyFetch('/api/user', {
+//   query: {
+//     user_id: id
+//   }
+// })
+
+// 中身はJSONのため、dataはstringになる
+const { data } = await useFetch('/api/date')
 </script>
 
 <template>
