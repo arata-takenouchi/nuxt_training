@@ -47,7 +47,27 @@ async function handleFormSubmit() {
 // })
 
 // 中身はJSONのため、dataはstringになる
-const { data } = await useFetch('/api/date')
+// const { data } = await useFetch('/api/date')
+
+const response = await $fetch<ReadableStream>('/chats/ask-ai' {
+  method: 'POST',
+  body: {
+    query: 'pythonについて教えて',
+  },
+  responseType: 'stream',
+})
+
+const reader = response.pipeThrough(new TextDecoderStream()).getReader()
+
+while (true) {
+  const { value, done } = await reader.read()
+
+  if (done) {
+    break
+  }
+
+  console.log('AIからの返信: ', value)
+}
 </script>
 
 <template>
