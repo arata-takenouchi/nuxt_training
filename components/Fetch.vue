@@ -49,6 +49,7 @@ async function handleFormSubmit() {
 // 中身はJSONのため、dataはstringになる
 // const { data } = await useFetch('/api/date')
 
+// ストリーム（SSE）のサンプル
 const response = await $fetch<ReadableStream>('/chats/ask-ai' {
   method: 'POST',
   body: {
@@ -68,6 +69,16 @@ while (true) {
 
   console.log('AIからの返信: ', value)
 }
+
+// 並列処理のサンプル
+const { data } = await useAsyncData(() => {
+  return Promise.all([
+    $fetch("/api/comments/"),
+    $fetch("/api/author/1"),
+  ])
+})
+const comments = computed(() => data.value?.[0])
+const author = computed(() => data.value?.[1])
 </script>
 
 <template>
