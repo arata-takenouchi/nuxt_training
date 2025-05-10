@@ -1,5 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  // ssr: false, // SSRを無効にすることもできる
+  // routeRules: {
+  //   // 個別に設定することも可能
+  //   '/api/**': { cors: true }, // 自動的にCORSヘッダーを追加
+  //   '/admin/**': { ssr: false } ,
+  // },
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   // 環境変数の設定
