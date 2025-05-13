@@ -6,4 +6,8 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.hook('vue:error', (error, instance, info) => {
     // こちらの場合はcatchされずにtopレベルでエラー発生した場合にtrigeerされる
   })
+
+  nuxtApp.hook('app:error', (error) => {
+    // nuxt側のエラーをcatchできる
+  })
 })
