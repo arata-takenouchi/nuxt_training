@@ -1,5 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  nitro: {
+    prerender: {
+      routes: ["/user/1", "/user/2"],
+      ignore: ["/dynamic"],
+    }
+  },
   // ssr: false, // SSRを無効にすることもできる
   // routeRules: {
   //   // 個別に設定することも可能
