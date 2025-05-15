@@ -2,8 +2,12 @@
 export default defineNuxtConfig({
   nitro: {
     prerender: {
-      routes: ["/user/1", "/user/2"],
-      ignore: ["/dynamic"],
+      // prerenderしないルートを指定
+      // routes: ["/user/1", "/user/2"],
+      // ignore: ["/dynamic"],
+      // クローラーが検出できないルートを指定することもできる
+      crawlLinks: true,
+      routes: ["/sitemap.xml", "robots.txt"]
     }
   },
   // ssr: false, // SSRを無効にすることもできる
