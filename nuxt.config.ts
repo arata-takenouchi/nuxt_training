@@ -1,5 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  routeRules: {
+    // 個別にprerenderのon/offを設定することも可能
+    '/user/1': { prerender: true },
+    '/user/2': { prerender: false },
+  },
   nitro: {
     prerender: {
       // prerenderしないルートを指定
